@@ -3,4 +3,4 @@ Check if properties exist on JavaScript object.
 
 # Test
 
-Run `node index.js` to see the properties listing.
+Run `node index.js` on terminal to see the properties listing.
