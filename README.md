@@ -1,6 +1,6 @@
 # Required Keys in NodeJS
 Check if required keys exist on JavaScript object.
 
-# Test
+## How to use it?
 
-Set required keys and Run `node index.js` on terminal to see the the results.
+Set required keys and run `node index.js` on terminal to see the the results.
