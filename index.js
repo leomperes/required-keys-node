@@ -2,6 +2,7 @@
  * Created by Leo M. <leomperes@belanton.com> on 4/22/16.
  */
 
+// Example of HTTP Request data where required keys will be searched.
 var httpRequestBody = {
   "data": [
     {
@@ -64,7 +65,8 @@ var httpRequestBody = {
   ]
 };
 
-// var requiredKeys = { params: ['tenantId'], body: ['portal', 'name'] };
+// Required keys will be searched in HTTP Request data above.
+var requiredKeys = { data: ['id', 'comments'] }; //params: ['tenantId'],
 
 // function iterate(httpRequestBody, stack) {
 //   // Loop on all object var properties.
@@ -86,3 +88,4 @@ var httpRequestBody = {
 // iterate(requiredKeys, 'test');
 
 console.log(httpRequestBody);
+console.log(requiredKeys);
