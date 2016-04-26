@@ -13,11 +13,12 @@ function iterate(obj, stack) {
       if (typeof obj[property] == 'object') {
         iterate(obj[property], stack + '.' + property);
       } else {
+        console.log(stack);
+        console.log(stack + '.' + property);
         console.log(property + ' - ' + obj[property]);
-        // $('#output').append($('<div/>').text(stack + '.' + property))
       }
     }
   }
 }
 
-iterate(obj, '');
+iterate(obj, 'test');
