@@ -1,6 +1,6 @@
-# properties-exist
-Check if properties exist on JavaScript object.
+# Required Keys in NodeJS
+Check if required keys exist on JavaScript object.
 
 # Test
 
-Run `node index.js` on terminal to see the properties listing.
+Set required keys and Run `node index.js` on terminal to see the the results.
