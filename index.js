@@ -2,7 +2,10 @@
  * Created by Leo M. <leomperes@belanton.com> on 4/22/16.
  */
 
-// Example of HTTP Request data where required keys will be searched.
+/**
+ * Example of HTTP Request data where required keys will be searched.
+ * @type {{data: *[]}}
+ */
 var httpRequestBody = {
   "data": [
     {
@@ -65,27 +68,56 @@ var httpRequestBody = {
   ]
 };
 
-// Required keys will be searched in HTTP Request data above.
-var requiredKeys = { data: ['id', 'comments'] }; //params: ['tenantId'],
+/**
+ * Required keys will be searched in HTTP Request data above.
+ * @type {{data: string[]}}
+ */
+var requiredKeys = { data: ['id', 'comments'] };
+//params: ['tenantId'],
 
-// function iterate(httpRequestBody, stack) {
-//   // Loop on all object var properties.
-//   for (var property in httpRequestBody) {
-//     // If object has the properties.
-//     if (httpRequestBody.hasOwnProperty(property)) {
-//       //
-//       if (typeof httpRequestBody[property] == 'object') {
-//         iterate(httpRequestBody[property], stack + '.' + property);
-//       } else {
-//         console.log(stack);
-//         console.log(stack + '.' + property);
-//         console.log(property + ' - ' + httpRequestBody[property]);
-//       }
-//     }
-//   }
-// }
-//
-// iterate(requiredKeys, 'test');
+/**
+ *
+ * @param dataKeys
+ * @param requiredDataKeys
+ */
+function iterate(dataKeys, requiredDataKeys) {
 
-console.log(httpRequestBody);
-console.log(requiredKeys);
+  var result = null;
+
+  // Loop on all object var properties.
+  for (var dataKey in dataKeys) {
+
+    // If object has the properties.
+    if (dataKeys.hasOwnProperty(dataKey)) {
+
+      //
+      if (typeof dataKeys[dataKey] == 'object') {
+        iterate(dataKeys[dataKey], requiredDataKeys + '.' + dataKey);
+      } else {
+        console.log(requiredDataKeys);
+        console.log(requiredDataKeys + '.' + dataKey);
+        console.log(dataKey + ' - ' + dataKeys[dataKey]);
+      }
+      
+    } else {
+      // Create an error.
+      result = new Error('The "' + dataKey + '" key is missing from request ' + dataKeys, 400);
+      // break;
+      return false;
+    }
+
+    // Maybe break outer loop.
+    if (null !== result) {
+      return false;
+    }
+
+  }
+
+  // Everything looks good.
+  return result;
+}
+
+iterate(httpRequestBody, requiredKeys);
+
+// console.log(httpRequestBody);
+// console.log(requiredKeys);
