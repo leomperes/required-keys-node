@@ -70,13 +70,13 @@ var httpRequestBody = {
 
 /**
  * Required keys will be searched in HTTP Request data above.
- * @type {{data: string[]}}
+ * @type {string[]}
+ * @example { params: ['tenantId'], body: ['portal','name'] }
  */
-var requiredKeys = { data: ['id', 'comments'] };
-//params: ['tenantId'],
+var requiredKeys = ['title', 'foo'];
 
 /**
- *
+ * Function to iterate through object keys checking those required.
  * @param dataKeys
  * @param requiredDataKeys
  */
@@ -90,19 +90,23 @@ function iterate(dataKeys, requiredDataKeys) {
     // If object has the properties.
     if (dataKeys.hasOwnProperty(dataKey)) {
 
-      //
       if (typeof dataKeys[dataKey] == 'object') {
         iterate(dataKeys[dataKey], requiredDataKeys + '.' + dataKey);
       } else {
         console.log(requiredDataKeys);
         console.log(requiredDataKeys + '.' + dataKey);
         console.log(dataKey + ' - ' + dataKeys[dataKey]);
+
+        // o = new Object();
+        // o.prop = 'exists';
+        // console.log(typeof(o.prop));
       }
-      
+      // console.log('Success');
     } else {
+      console.log('Error');
       // Create an error.
       result = new Error('The "' + dataKey + '" key is missing from request ' + dataKeys, 400);
-      // break;
+      // Break..
       return false;
     }
 
@@ -115,9 +119,62 @@ function iterate(dataKeys, requiredDataKeys) {
 
   // Everything looks good.
   return result;
+
+  // TODO: Remove unnecessary code.
+  // for (var requiredDataKey in requiredDataKeys) {
+  //   // if (typeof requiredDataKeys[requiredDataKey] == 'object') {
+  //   //   objectHasOwnProperty(requiredDataKeys[requiredDataKey], requiredDataKey);
+  //   // }
+  //   // else {
+  //   //   objectHasOwnProperty(requiredDataKeys, requiredDataKey);
+  //   // }
+  //   if (!dataKeys.hasOwnProperty(requiredDataKey)) {
+  //     console.log('Error on: ' + typeof requiredDataKeys[requiredDataKey] + ' ' + requiredDataKey);
+  //   }
+  // }
+  //
+  // for (var dataKey in dataKeys) {
+  //   if (typeof dataKeys[dataKey] == 'object') {
+  //     iterate(dataKeys[dataKey], requiredDataKeys)
+  //   }
+  // }
+
 }
+
+// TODO: Remove unnecessary code.
+// function objectHasOwnProperty(obj, prop) {
+//   if (!obj.hasOwnProperty(prop)) {
+//     console.log(obj + 'doesn\'t have ' + prop + ' property!');
+//   }
+// }
 
 iterate(httpRequestBody, requiredKeys);
 
+// TODO: Remove unnecessary code.
 // console.log(httpRequestBody);
 // console.log(requiredKeys);
+
+// var buz = {
+//   fog: 'stack',
+//   foo: 'bar',
+//   tests: [
+//     {
+//       john: 'doe'
+//     }
+//   ]
+// };
+
+// var keys = ['fog', 'foo']; //, 'tests'
+
+// for (var name in buz) {
+//   // console.log(name);
+//   if (keys.indexOf(name) > -1) {
+//     console.log('this is fog (' + name + ') for sure. Value: ' + buz[name] + '. Type: ' + typeof(buz[name]));
+//     // typeof dataKeys[dataKey] == 'object'
+//     // console.log(buz.hasOwnProperty(name));
+//   } else {
+//     console.log('Error:' + name); // TODO: toString or something else
+//   }
+// }
+
+// console.log(Object.getOwnPropertyNames(buz));
