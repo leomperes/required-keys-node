@@ -1,0 +1,11 @@
+{
+  "excludeFiles": [
+    "./Gruntfile.js"
+  ],
+  "maxErrors": 999,
+  "validateQuoteMarks": false,
+  "disallowQuotedKeysInObjects": false,
+  "requireTrailingComma": false,
+  "maximumLineLength": 120,
+  "requireCapitalizedComments": false
+}
