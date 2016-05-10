@@ -1,6 +1,6 @@
 {
-  "name": "properties-exist",
-  "version": "1.0.0",
+  "name": "required-keys",
+  "version": "0.0.1",
   "description": "Check if properties exist on JavaScript object.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leomperes/properties-exist.git"
+    "url": "git+https://github.com/leomperes/required-keys-node.git"
   },
   "keywords": [
     "javascrip",
@@ -17,12 +17,14 @@
     "property",
     "properties",
     "find",
-    "match"
+    "match",
+    "required",
+    "key"
   ],
   "author": "Leo M. Peres",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/leomperes/properties-exist/issues"
+    "url": "https://github.com/leomperes/required-keys-node/issues"
   },
-  "homepage": "https://github.com/leomperes/properties-exist#readme"
+  "homepage": "https://github.com/leomperes/required-keys-node#readme"
 }
