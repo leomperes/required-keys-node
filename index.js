@@ -3,7 +3,7 @@
  * @type {{check: module.exports.check}}
  * @version 0.0.2
  * @author Leo M. <leomperes@belanton.com>
- * @since 4/22/16
+ * @since 0.0.0 (4/22/16)
  */
 module.exports = {
 
